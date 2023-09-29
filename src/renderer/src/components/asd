@@ -1,0 +1,69 @@
+import { useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
+
+const AudioWaveform = ({ audioUrl }) => {
+  const canvasRef = useRef(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    const context = canvas.getContext('2d')
+
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+    const analyser = audioContext.createAnalyser()
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(audioUrl)
+        const arrayBuffer = await response.arrayBuffer()
+        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer)
+
+        // Create a buffer source and connect it to the analyser
+        const source = audioContext.createBufferSource()
+        source.buffer = audioBuffer
+        source.connect(analyser)
+
+        // Connect the analyser to the destination (i.e., speakers)
+        analyser.connect(audioContext.destination)
+
+        // Clear the canvas
+        context.clearRect(0, 0, canvas.width, canvas.height)
+
+        // Set up the line style
+        context.strokeStyle = 'blue'
+        context.lineWidth = 2
+
+        // Get the audio data as an array
+        const dataArray = new Float32Array(analyser.fftSize)
+        analyser.getFloatTimeDomainData(dataArray)
+
+        // Start drawing the waveform
+        context.beginPath()
+
+        for (let i = 0; i < dataArray.length; i++) {
+          const v = dataArray[i] * 0.5 + 0.5 // Scale the value to [0, 1]
+          const y = v * canvas.height
+
+          if (i === 0) {
+            context.moveTo(i, y)
+          } else {
+            context.lineTo(i, y)
+          }
+        }
+
+        context.stroke()
+      } catch (error) {
+        console.error('Error fetching audio data:', error)
+      }
+    }
+
+    fetchData()
+  }, [audioUrl])
+
+  return <canvas ref={canvasRef} width={800} height={200} />
+}
+
+AudioWaveform.propTypes = {
+  audioUrl: PropTypes.string.isRequired // URL to the WAV file
+}
+
+export default AudioWaveform
