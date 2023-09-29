@@ -1,6 +1,6 @@
-# waveform
+# Waveform Generator
 
-An Electron application with React
+An Electron app that generates a waveform from an audio file
 
 ## Recommended IDE Setup
 
