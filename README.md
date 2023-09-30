@@ -2,7 +2,7 @@
 
 An Electron app that generates a waveform from a WAV file.
 
-Other formats work, however the app will display an incorrect sample frequency.
+Other audio formats work, however, the app will display an incorrect sample frequency.
 
 ## Building
 
