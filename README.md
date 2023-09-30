@@ -1,6 +1,6 @@
 # Waveform Generator
 
-An Electron app that generates a waveform from a WAV file.
+An Electron app that generates the waveform of a WAV file.
 
 Other audio formats work, however, the app will display an incorrect sample frequency.
 
