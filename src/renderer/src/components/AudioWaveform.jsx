@@ -87,7 +87,7 @@ const AudioWaveform = ({ audioUrl }) => {
 
         rightContext.stroke()
 
-        audioInfoRef.current.innerHTML = `File Sample Count: <span style="color: white">${sampleCount}</span> <br> File Sample Frequency: <span style="color: white">${sampleRate} hz</span>`
+        audioInfoRef.current.innerHTML = `Sample Count: <span style="color: white">${sampleCount}</span> <br> Sample Frequency: <span style="color: white">${sampleRate} hz</span>`
       } catch (error) {
         console.error('Error fetching audio data:', error)
       }
