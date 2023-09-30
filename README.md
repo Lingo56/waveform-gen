@@ -10,7 +10,7 @@ An Electron app that generates a waveform from an audio file
 $ npm run dev
 ```
 
-### Build
+### Release
 
 ```bash
 # For windows
