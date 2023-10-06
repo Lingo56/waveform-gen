@@ -1,6 +1,8 @@
 # Waveform Generator
 
-An Electron app that generates a waveform from an audio file
+An Electron app that generates the waveform of a WAV file.
+
+Other audio formats work, however, the app will display an incorrect sample frequency.
 
 ## Building
 
@@ -10,7 +12,7 @@ An Electron app that generates a waveform from an audio file
 $ npm run dev
 ```
 
-### Build
+### Release
 
 ```bash
 # For windows
