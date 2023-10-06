@@ -14,16 +14,17 @@ function App() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center', // Center horizontally
-        justifyContent: 'center', // Center vertically
-        marginTop: '100px',
-        textAlign: 'center' // Center the content horizontally
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh'
       }}
       className="App"
     >
-      {selectedFile && <AudioWaveform audioUrl={URL.createObjectURL(selectedFile)} />}
       <div style={{ textAlignLast: 'center', margin: 'auto' }}>
-        <FileInput onFileSelected={handleFileSelected} />
+        {selectedFile && <AudioWaveform audioUrl={URL.createObjectURL(selectedFile)} />}
+        <div style={{ paddingTop: '20px' }}>
+          <FileInput onFileSelected={handleFileSelected} />
+        </div>
       </div>
     </div>
   )

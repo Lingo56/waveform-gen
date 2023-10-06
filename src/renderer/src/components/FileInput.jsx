@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types' // Import PropTypes
+import PropTypes from 'prop-types'
 
 const FileInput = ({ onFileSelected }) => {
   const handleFileChange = (e) => {
@@ -15,9 +15,8 @@ const FileInput = ({ onFileSelected }) => {
   )
 }
 
-// Define PropTypes for your component
 FileInput.propTypes = {
-  onFileSelected: PropTypes.func.isRequired // It should be a function and is required
+  onFileSelected: PropTypes.func.isRequired
 }
 
 export default FileInput
